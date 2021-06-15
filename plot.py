@@ -185,7 +185,7 @@ def make_plot(
         savename = None, show=False,
         figsize = (8,5),
         xticks = None, yticks = None,
-        yreverse=False,yreverse=False,
+        xreverse=False,yreverse=False,
         xrotation=None,yrotation=None,
         xlog = False, ylog = False,
         loc = "best",stack=False,ncol=1,dpi=100):
@@ -242,7 +242,7 @@ def make_plot(
                 ax.set_yticklabels([], fontsize = fontsize)
             else:
                 ax.set_yticks(yticks[0])
-                ax.set_yticklabels(yticks[1], fontsize = fontsize,,rotation=yrotation)
+                ax.set_yticklabels(yticks[1], fontsize = fontsize,rotation=yrotation)
                 ax.tick_params(axis='y', which='major',length=10,width=2)
                 ax.tick_params(axis='y', which='minor',labelsize=0,length=5,width=1)
 
