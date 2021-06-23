@@ -5,12 +5,21 @@ from matplotlib.colors import LogNorm
 from matplotlib import cm
 import numpy as np
 import scipy.optimize as opt
+from scipy.stats import pearsonr
 
 # for Palatino and other serif fonts use:
 plt.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Palatino"],
 })
+
+colors = [
+    '#1f77b4',
+    '#ff7f0e',
+    '#2ca02c',
+    '#d62728',
+    '#9467bd',
+]
 
 class layer:
     def __init__(self,
@@ -78,7 +87,7 @@ def add_layer(ax,layer):
                                 s = layer.size)
                 else:
                     p1 = ax.scatter(layer.X, layer.Y, c = layer.Z, 
-                                cmap = 'coolwarm', label = layer.label, 
+                                cmap = 'coolwarm', label = layer.label, s = layer.size, 
                                 marker = layer.shape, vmin=rnge[0],vmax=rnge[1],alpha=layer.alpha,)
                 if layer.bar:
                     c1 = plt.colorbar(p1, ax = ax, orientation='vertical')
@@ -204,7 +213,7 @@ def make_plot(
             ax.set_ylabel(ylabel,fontsize=fontsize)
 
         if stack:
-            ax.tick_params(axis='both', which='major', labelsize=fontsize, direction = 'inout',bottom=True,top=True,length=10,width=2)
+            ax.tick_params(axis='both', which='major', labelsize=fontsize, direction = 'inout',bottom=True,top=True,right=True,left=True,length=10,width=2)
         else:
             ax.tick_params(axis='both', which='major', labelsize=fontsize,length=10,width=2)
 
@@ -261,3 +270,44 @@ def make_plot(
         if savename:
             fig.tight_layout()
             fig.savefig(savename, dpi=dpi, box_inches='tight')
+
+def make_triplot(x,y,z=None,
+    bins='auto',
+    xlabel = None, ylabel = None,
+    alpha=1,figsize = (15, 15),
+    color = 'k', 
+    stats = None):
+
+    fig = plt.figure(figsize = figsize)
+    plt.subplots_adjust(wspace=0.,hspace=0.)
+    nx = 2; ny = 2
+
+    ax1 = fig.add_subplot(nx,ny,1)
+    ax4 = fig.add_subplot(nx,ny,4)
+    ax3 = fig.add_subplot(nx,ny,3)
+
+    make_plot([
+        layer('hist',x,density=True,bins=bins),
+    ],ax1,xticks = [[],[]],
+    ylabel = 'PDF'
+    )
+
+    make_plot([
+        layer('hist',y,orientation='horizontal',density=True,bins=bins),
+    ],ax4,yticks = [[],[]],
+    xlabel = 'PDF'
+    )
+
+    layers = [
+        layer('scatter',x,y,alpha=alpha,Z=z,color=color),
+    ]
+    if stats:
+        r,p = pearsonr(x,y)
+        string = '$R={:.2}$\n$p={:.2}$'.format(r,p)
+        layers += [
+            layer('text',stats[0],stats[1],STR = string)
+        ]
+    make_plot(layers,ax3,stack=True,
+    xlabel = xlabel,
+    ylabel = ylabel)
+
