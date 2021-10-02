@@ -19,7 +19,17 @@ colors = [
     '#2ca02c',
     '#d62728',
     '#9467bd',
+    '#8c564b',
+    '#e377c2',
+    '#7f7f7f',
+    '#bcbd22'
 ]
+
+def get_mosaic(mosaic='''A''',figsize = (10,10)):
+    mosaic = mosaic
+    fig = plt.figure(constrained_layout=True, figsize = figsize)
+    ax_dict = fig.subplot_mosaic(mosaic)
+    return fig, ax_dict
 
 class layer:
     def __init__(self,
@@ -270,44 +280,3 @@ def make_plot(
         if savename:
             fig.tight_layout()
             fig.savefig(savename, dpi=dpi, box_inches='tight')
-
-def make_triplot(x,y,z=None,
-    bins='auto',
-    xlabel = None, ylabel = None,
-    alpha=1,figsize = (15, 15),
-    color = 'k', 
-    stats = None):
-
-    fig = plt.figure(figsize = figsize)
-    plt.subplots_adjust(wspace=0.,hspace=0.)
-    nx = 2; ny = 2
-
-    ax1 = fig.add_subplot(nx,ny,1)
-    ax4 = fig.add_subplot(nx,ny,4)
-    ax3 = fig.add_subplot(nx,ny,3)
-
-    make_plot([
-        layer('hist',x,density=True,bins=bins),
-    ],ax1,xticks = [[],[]],
-    ylabel = 'PDF'
-    )
-
-    make_plot([
-        layer('hist',y,orientation='horizontal',density=True,bins=bins),
-    ],ax4,yticks = [[],[]],
-    xlabel = 'PDF'
-    )
-
-    layers = [
-        layer('scatter',x,y,alpha=alpha,Z=z,color=color),
-    ]
-    if stats:
-        r,p = pearsonr(x,y)
-        string = '$R={:.2}$\n$p={:.2}$'.format(r,p)
-        layers += [
-            layer('text',stats[0],stats[1],STR = string)
-        ]
-    make_plot(layers,ax3,stack=True,
-    xlabel = xlabel,
-    ylabel = ylabel)
-
