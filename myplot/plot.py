@@ -161,8 +161,8 @@ def add_layer(ax,layer):
         elif layer.version == "errorbar":
 
             ax.errorbar(layer.X,layer.Y,
-                xerr = layer.XERR, yerr = layer.YERR, 
-                color = layer.color, alpha = layer.alpha, 
+                xerr = layer.XERR, yerr = layer.YERR, zorder = layer.zorder,
+                color = layer.color, alpha = layer.alpha, markersize = layer.size,
                 label = layer.label, linestyle = layer.linestyle, 
                 capsize = layer.capsize,marker=layer.shape)
         
