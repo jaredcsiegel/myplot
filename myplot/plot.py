@@ -44,7 +44,8 @@ class layer:
         linestyle = '-', linewidth = 3,
         bar = None, cumulative = False, bins = 'auto', density=False,
         contours = None, smooth = None,
-        bold = False, orientation = 'vertical',step=None
+        bold = False, orientation = 'vertical',step=None,
+        histtype = 'step'
     ):  
         self.version = version
         self.X = X
@@ -74,7 +75,8 @@ class layer:
         self.bold = bold
         self.orientation = orientation
         self.step = step
-        
+        self.histtype = histtype
+
 def add_layer(ax,layer):
 
         if layer.version == "line":
@@ -116,7 +118,7 @@ def add_layer(ax,layer):
                     color = layer.color, alpha=layer.alpha, 
                     range = layer.rnge,label=layer.label,
                     linestyle=layer.linestyle, linewidth = layer.linewidth, 
-                    histtype='step', cumulative = layer.cumulative,
+                    histtype=layer.histtype, cumulative = layer.cumulative,
                     orientation = layer.orientation)
             
         elif layer.version == "bar":
