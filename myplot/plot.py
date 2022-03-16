@@ -14,6 +14,8 @@ matplotlib.rcParams['font.family'] = "serif"
 
 matplotlib.rcParams['axes.linewidth'] = 2
 
+matplotlib.rcParams["mathtext.fontset"] = "dejavuserif"
+
 colors = [
     '#1f77b4',
     '#ff7f0e',
