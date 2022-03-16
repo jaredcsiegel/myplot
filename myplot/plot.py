@@ -226,7 +226,7 @@ def make_plot(
             ax.set_ylabel(ylabel,fontsize=fontsize)
 
         ax.tick_params(axis='both', which='major', labelsize=fontsize,length=10,width=2)
-        ax.tick_params(axis='both', which='minor', labelsize=fontsize,length=5,width=1)
+        ax.tick_params(axis='both', which='minor', labelsize=fontsize,length=3,width=1)
 
         if xlim:
             ax.set_xlim(xlim)
