@@ -7,11 +7,11 @@ import numpy as np
 import scipy.optimize as opt
 from scipy.stats import pearsonr
 
-# for Palatino and other serif fonts use:
-plt.rcParams.update({
-    "font.family": "serif",
-    "font.serif": ["Palatino"],
-})
+# Say, "the default sans-serif font is COMIC SANS"
+matplotlib.rcParams['font.serif'] = "DejaVu Serif"
+# Then, "ALWAYS use sans-serif fonts"
+matplotlib.rcParams['font.family'] = "serif"
+
 
 colors = [
     '#1f77b4',
