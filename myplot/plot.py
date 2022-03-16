@@ -12,6 +12,7 @@ matplotlib.rcParams['font.serif'] = "DejaVu Serif"
 # Then, "ALWAYS use sans-serif fonts"
 matplotlib.rcParams['font.family'] = "serif"
 
+matplotlib.rcParams['axes.linewidth'] = 2
 
 colors = [
     '#1f77b4',
