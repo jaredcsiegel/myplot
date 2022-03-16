@@ -225,10 +225,8 @@ def make_plot(
         if ylabel:
             ax.set_ylabel(ylabel,fontsize=fontsize)
 
-        if stack:
-            ax.tick_params(axis='both', which='major', labelsize=fontsize, direction = 'inout',bottom=True,top=True,right=True,left=True,length=10,width=2)
-        else:
-            ax.tick_params(axis='both', which='major', labelsize=fontsize,length=10,width=2)
+        ax.tick_params(axis='both', which='major', labelsize=fontsize,length=10,width=2)
+        ax.tick_params(axis='both', which='minor', labelsize=fontsize,length=5,width=1)
 
         if xlim:
             ax.set_xlim(xlim)
@@ -257,7 +255,7 @@ def make_plot(
                 ax.set_xticklabels(xticks[1], fontsize = fontsize,rotation=xrotation)
                 
                 ax.tick_params(axis='x', which='major',length=10,width=2)
-                ax.tick_params(axis='x', which='minor',labelsize=0,length=7,width=1)
+                ax.tick_params(axis='x', which='minor',labelsize=0,length=5,width=1)
 
         if yticks:
             if yticks == 'None':
@@ -266,7 +264,7 @@ def make_plot(
                 ax.set_yticks(yticks[0])
                 ax.set_yticklabels(yticks[1], fontsize = fontsize,rotation=yrotation)
                 ax.tick_params(axis='y', which='major',length=10,width=2)
-                ax.tick_params(axis='y', which='minor',labelsize=0,length=7,width=1)
+                ax.tick_params(axis='y', which='minor',labelsize=0,length=5,width=1)
 
         if yreverse:
             ax.invert_yaxis()
