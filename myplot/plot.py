@@ -9,6 +9,7 @@ from scipy.stats import pearsonr
 
 # Say, "the default sans-serif font is COMIC SANS"
 matplotlib.rcParams['font.serif'] = "DejaVu Serif"
+
 # Then, "ALWAYS use sans-serif fonts"
 matplotlib.rcParams['font.family'] = "serif"
 
