@@ -198,10 +198,16 @@ def add_layer(ax,layer):
             Hmask = np.ma.masked_where(H==0,H)
             
             cmin = 1e-4; cmax = 1.0
-            if not vmin:
+            if not layer.vmin:
                 vmin=cmin*np.max(Hmask)
-            if not vmax:
+            else:
+                vmin = layer.vmin
+                
+            if not layer.vmax:
                 vmax=cmax*np.max(Hmask)
+            else:
+                vmax = layer.vmax
+
             p1 = ax.pcolormesh(X, Y,(Hmask),  cmap=layer.color, norm = LogNorm(vmin,vmax), linewidth=0., shading='auto',alpha=layer.alpha,edgecolors=None)
             p1.set_edgecolor('face')
         
