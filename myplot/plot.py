@@ -49,7 +49,8 @@ class layer:
         bar = None, cumulative = False, bins = 'auto', density=False,
         contours = None, smooth = None,
         bold = False, orientation = 'vertical',step=None,
-        histtype = 'step'
+        histtype = 'step',
+        vmin = None, vmax = None
     ):  
         self.version = version
         self.X = X
@@ -80,6 +81,8 @@ class layer:
         self.orientation = orientation
         self.step = step
         self.histtype = histtype
+        self.vmin = vmin
+        self.vmax = vmax
 
 def add_layer(ax,layer):
 
@@ -195,7 +198,10 @@ def add_layer(ax,layer):
             Hmask = np.ma.masked_where(H==0,H)
             
             cmin = 1e-4; cmax = 1.0
-            vmin=cmin*np.max(Hmask); vmax=cmax*np.max(Hmask)
+            if not vmin:
+                vmin=cmin*np.max(Hmask)
+            if not vmax:
+                vmax=cmax*np.max(Hmask)
             p1 = ax.pcolormesh(X, Y,(Hmask),  cmap=layer.color, norm = LogNorm(vmin,vmax), linewidth=0., shading='auto',alpha=layer.alpha,edgecolors=None)
             p1.set_edgecolor('face')
         
