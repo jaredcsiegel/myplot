@@ -196,8 +196,8 @@ def add_layer(ax,layer):
             
             cmin = 1e-4; cmax = 1.0
             vmin=cmin*np.max(Hmask); vmax=cmax*np.max(Hmask)
-            c1 = ax.pcolormesh(X, Y,(Hmask),  cmap=layer.color, norm = LogNorm(vmin,vmax), linewidth=0., shading='auto',alpha=layer.alpha,edgecolors=None)
-            c1.set_edgecolor('face')
+            p1 = ax.pcolormesh(X, Y,(Hmask),  cmap=layer.color, norm = LogNorm(vmin,vmax), linewidth=0., shading='auto',alpha=layer.alpha,edgecolors=None)
+            p1.set_edgecolor('face')
         
             if layer.bar:
                 c1 = plt.colorbar(p1, ax = ax, orientation='vertical')
