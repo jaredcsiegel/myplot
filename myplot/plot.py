@@ -120,7 +120,7 @@ def add_layer(ax,layer):
 
         elif layer.version == "hist":
 
-            ax.hist(layer.X, bins = layer.bins,
+            ax.hist(layer.X, bins = layer.bins,zorder = layer.zorder,
                     density=layer.density, weights=layer.W, 
                     color = layer.color, alpha=layer.alpha, 
                     range = layer.rnge,label=layer.label,
