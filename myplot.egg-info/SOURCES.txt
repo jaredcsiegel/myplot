@@ -1,0 +1,9 @@
+README.md
+setup.py
+myplot/__init__.py
+myplot/plot.py
+myplot.egg-info/PKG-INFO
+myplot.egg-info/SOURCES.txt
+myplot.egg-info/dependency_links.txt
+myplot.egg-info/requires.txt
+myplot.egg-info/top_level.txt
