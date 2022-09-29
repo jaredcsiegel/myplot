@@ -208,7 +208,7 @@ def add_layer(ax,layer):
             else:
                 vmax = layer.vmax
 
-            p1 = ax.pcolormesh(X, Y,(Hmask),  cmap=layer.color, vmin=vmin,vmax=vmax,#norm = LogNorm(vmin,vmax), 
+            p1 = ax.pcolormesh(X, Y,(Hmask),  cmap=layer.color, vmin=vmin,vmax=vmax,norm = LogNorm(vmin,vmax), 
                 linewidth=0., shading='auto',alpha=layer.alpha,edgecolors=None)
             p1.set_edgecolor('none')
         
