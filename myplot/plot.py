@@ -159,7 +159,7 @@ def add_layer(ax,layer):
         elif layer.version == 'fill':
 
             ax.fill_between(layer.X, layer.Y[0], layer.Y[1], color = layer.color, alpha = layer.alpha,
-                           step = layer.step)
+                           step = layer.step, label = layer.label)
 
         elif layer.version == 'step':
 
