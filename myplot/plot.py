@@ -106,7 +106,7 @@ def add_layer(ax,layer):
                                 s = layer.size)
                 else:
                     p1 = ax.scatter(layer.X, layer.Y, c = layer.Z, 
-                                cmap = 'coolwarm', label = layer.label, s = layer.size, 
+                                cmap = layer.color, label = layer.label, s = layer.size, 
                                 marker = layer.shape, vmin=rnge[0],vmax=rnge[1],alpha=layer.alpha,)
                 if layer.bar:
                     c1 = plt.colorbar(p1, ax = ax, orientation='vertical')
