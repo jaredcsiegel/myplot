@@ -106,7 +106,7 @@ def add_layer(ax,layer):
                                 s = layer.size)
                 else:
                     p1 = ax.scatter(layer.X, layer.Y, c = layer.Z, 
-                                cmap = 'coolwarm', label = layer.label, s = layer.size, 
+                                cmap = layer.color, label = layer.label, s = layer.size, 
                                 marker = layer.shape, vmin=rnge[0],vmax=rnge[1],alpha=layer.alpha,)
                 if layer.bar:
                     c1 = plt.colorbar(p1, ax = ax, orientation='vertical')
@@ -159,7 +159,7 @@ def add_layer(ax,layer):
         elif layer.version == 'fill':
 
             ax.fill_between(layer.X, layer.Y[0], layer.Y[1], color = layer.color, alpha = layer.alpha,
-                           step = layer.step)
+                           step = layer.step, label = layer.label)
 
         elif layer.version == 'step':
 
@@ -208,7 +208,7 @@ def add_layer(ax,layer):
             else:
                 vmax = layer.vmax
 
-            p1 = ax.pcolormesh(X, Y,(Hmask),  cmap=layer.color, vmin=vmin,vmax=vmax,norm = LogNorm(vmin,vmax), 
+            p1 = ax.pcolormesh(X, Y,(Hmask),  cmap=layer.color, vmin=vmin,vmax=vmax,#norm = LogNorm(vmin,vmax), 
                 linewidth=0., shading='auto',alpha=layer.alpha,edgecolors=None)
             p1.set_edgecolor('none')
         
