@@ -301,4 +301,4 @@ def make_plot(
             plt.show()
         if savename:
             fig.tight_layout()
-            fig.savefig(savename, dpi=dpi, box_inches='tight')
+            fig.savefig(savename, dpi=dpi)
