@@ -6,7 +6,7 @@ from matplotlib import cm
 import numpy as np
 import scipy.optimize as opt
 from scipy.stats import pearsonr
-
+print('Loaded')
 # Say, "the default sans-serif font is COMIC SANS"
 matplotlib.rcParams['font.serif'] = "DejaVu Serif"
 
