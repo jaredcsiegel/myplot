@@ -193,7 +193,6 @@ def add_layer(ax,layer):
                 xerr = layer.XERR, yerr = layer.YERR, zorder = layer.zorder,
                 color = layer.color, alpha = layer.alpha, markersize = layer.size,
                 label = layer.label, linestyle = layer.linestyle, 
-                elinewidth = layer.linewidth,
                 capsize = layer.capsize,marker=layer.shape)
         
         elif layer.version == "text":
