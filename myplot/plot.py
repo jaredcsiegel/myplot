@@ -247,6 +247,7 @@ def make_plot(
         legend = False,square=False,
         savename = None, show=False,
         figsize = (8,5),
+        frameon = False,
         xticks = None, yticks = None,
         xreverse=False,yreverse=False,
         xrotation=None,yrotation=None,
@@ -275,7 +276,7 @@ def make_plot(
             ax.set_ylim(ylim)
 
         if legend:
-            ax.legend(fontsize = fontsize, frameon = False, loc = loc, ncol = ncol)
+            ax.legend(fontsize = fontsize, frameon = frameon, loc = loc, ncol = ncol)
 
         if title:
             ax.set_title(title, fontsize = fontsize)

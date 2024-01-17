@@ -6,7 +6,6 @@ from matplotlib import cm
 import numpy as np
 import scipy.optimize as opt
 from scipy.stats import pearsonr
-
 # Say, "the default sans-serif font is COMIC SANS"
 matplotlib.rcParams['font.serif'] = "DejaVu Serif"
 
@@ -16,6 +15,27 @@ matplotlib.rcParams['font.family'] = "serif"
 matplotlib.rcParams['axes.linewidth'] = 2
 
 matplotlib.rcParams["mathtext.fontset"] = "dejavuserif"
+
+import matplotlib as mpl
+mpl.rcParams['xtick.major.size'] = 9
+mpl.rcParams['xtick.major.width'] = 1.2
+mpl.rcParams['xtick.minor.size'] = 4
+mpl.rcParams['xtick.minor.width'] = 1.2
+
+mpl.rcParams['ytick.major.size'] = 9
+mpl.rcParams['ytick.major.width'] = 1.2
+mpl.rcParams['ytick.minor.size'] = 4
+mpl.rcParams['ytick.minor.width'] = 1.2
+
+mpl.rcParams['xtick.direction'] = 'in'
+mpl.rcParams['ytick.direction'] = 'in'
+
+mpl.rcParams['ytick.right'] = True
+
+mpl.rcParams['ytick.minor.visible'] = True
+mpl.rcParams['xtick.minor.visible'] = True
+
+mpl.rcParams['xtick.top'] = True
 
 colors = [
     '#1f77b4',
@@ -301,4 +321,4 @@ def make_plot(
             plt.show()
         if savename:
             fig.tight_layout()
-            fig.savefig(savename, dpi=dpi, box_inches='tight')
+            fig.savefig(savename, dpi=dpi)
